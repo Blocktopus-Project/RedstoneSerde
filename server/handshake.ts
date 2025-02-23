@@ -1,10 +1,11 @@
-import { u8, Struct, VarInts, type InnerType, u16be } from "../deps.ts";
+import { i32leb128, type InnerType, Struct, u16be, u8 } from "../deps.ts";
+import { varIntString } from "../util_classes.ts";
 
 export const handshakeCodec = new Struct({
-    protocolVersion: VarInts.i32leb128,
-    // serverAdress: varintString,
-    serverPort: u16be,
-    nextState: u8, 
+  protocolVersion: i32leb128,
+  serverAdress: varIntString,
+  serverPort: u16be,
+  nextState: u8,
 });
 
 export type HandshakePacket = InnerType<typeof handshakeCodec>;
