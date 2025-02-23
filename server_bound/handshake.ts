@@ -7,5 +7,4 @@ export const handshakeCodec = new Struct({
   serverPort: u16be,
   nextState: u8,
 });
-
 export type HandshakePacket = InnerType<typeof handshakeCodec>;
